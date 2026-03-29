@@ -1,0 +1,38 @@
+{
+  "name": "Habit Tracker",
+  "short_name": "Habits",
+  "description": "A polished habit tracker with streaks, badges, and a 12-week heatmap.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#3f7f57",
+  "background_color": "#0d1b13",
+  "categories": ["productivity", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Today's habits",
+      "short_name": "Today",
+      "url": "/#today",
+      "description": "Check in on today's habits"
+    }
+  ]
+}

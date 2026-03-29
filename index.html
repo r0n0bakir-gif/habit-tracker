@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- PWA essentials -->
+    <meta name="theme-color" content="#3f7f57" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Habits" />
+
+    <!-- SEO / sharing -->
+    <meta name="description" content="A polished habit tracker with streaks, badges, a 12-week heatmap, and flexible schedules." />
+    <meta property="og:title" content="Habit Tracker" />
+    <meta property="og:description" content="Track daily habits with streaks, badges, and a 12-week consistency heatmap." />
+    <meta property="og:type" content="website" />
+
+    <!-- Manifest & icons -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+
+    <title>Habit Tracker</title>
+  </head>
+  <body>
+    <noscript>Habit Tracker requires JavaScript to run.</noscript>
+    <div id="root"></div>
+
+    <!--
+      Entry point for your bundler:
+        Vite  →  <script type="module" src="/src/main.jsx"></script>
+        CRA   →  handled automatically via react-scripts start
+
+      Uncomment and adjust the line below if using Vite:
+    -->
+    <!-- <script type="module" src="/src/main.jsx"></script> -->
+
+    <!--
+      Service worker bootstrap.
+      WHY: Registering here (before React hydrates) means the SW is active as
+      early as possible, so the very first load after install is cache-served.
+      The App.jsx useEffect also registers it as a belt-and-suspenders fallback.
+
+      NOTE: sw.js must be served from the origin root.
+        Vite  → place sw.js in /public/sw.js
+        CRA   → place sw.js in /public/sw.js
+        serve → sw.js is already at the root of this directory
+    -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').catch(function (err) {
+            console.warn('[Habit Tracker] SW registration failed:', err.message);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
